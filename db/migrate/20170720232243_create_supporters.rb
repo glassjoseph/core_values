@@ -4,6 +4,7 @@ class CreateSupporters < ActiveRecord::Migration[5.0]
       t.string :first_name
       t.string :last_name
       t.string :email
+      t.references :user, foreign_key: true
     end
   end
 end
