@@ -40,7 +40,7 @@ gem 'bootstrap-sass'
 group :test do
   gem 'capybara'
   gem 'database_cleaner'
-  gem 'faker'
+  gem 'faker', :git => 'git://github.com/stympy/faker.git', :branch => 'master'
   gem 'launchy'
   gem 'selenium-webdriver'
 end
