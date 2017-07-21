@@ -1,0 +1,8 @@
+<h1>Core values</h1>
+<%if current_user %>
+  <h2>Welcome, <%= current_user.first_name %>  </h2>
+  <%= link_to "Logout", login_path, method: :delete %>
+<% else %>
+  <%= link_to "Login", login_path %>
+  <%= link_to "Create an Account", new_user_path%>
+<% end %>

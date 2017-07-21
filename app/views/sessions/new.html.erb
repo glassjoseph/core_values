@@ -8,6 +8,7 @@
     <%= f.password_field :password, placeholder: "Password", required: true%>
     <%= f.submit "Login" %>
   <% end %>
+  <%= link_to "Create an Account", new_user_path%>
 <% else %>
-  <% link_to "Logout", logout_path, method: :delete %>
+  <%= link_to "Logout", login_path, method: :delete %>
 <% end %>
