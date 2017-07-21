@@ -1,5 +1,7 @@
 class Daily < ApplicationRecord
   belongs_to :user
-  belongs_to :supporter
+  # belongs_to :supporter
 
+  has_many :taggings, :as => :taggable
+  has_many :tags, through: :taggings
 end
