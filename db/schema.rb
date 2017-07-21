@@ -10,10 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170720232243) do
+ActiveRecord::Schema.define(version: 20170721141401) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "dailies", force: :cascade do |t|
+    t.string   "goal"
+    t.integer  "user_id"
+    t.integer  "supporter_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.index ["supporter_id"], name: "index_dailies_on_supporter_id", using: :btree
+    t.index ["user_id"], name: "index_dailies_on_user_id", using: :btree
+  end
 
   create_table "supporters", force: :cascade do |t|
     t.string  "first_name"
@@ -23,6 +33,20 @@ ActiveRecord::Schema.define(version: 20170720232243) do
     t.index ["user_id"], name: "index_supporters_on_user_id", using: :btree
   end
 
+  create_table "taggings", force: :cascade do |t|
+    t.integer  "tag_id"
+    t.integer  "taggable_id"
+    t.string   "taggable_type"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
@@ -30,5 +54,7 @@ ActiveRecord::Schema.define(version: 20170720232243) do
     t.string "password_digest"
   end
 
+  add_foreign_key "dailies", "supporters"
+  add_foreign_key "dailies", "users"
   add_foreign_key "supporters", "users"
 end
