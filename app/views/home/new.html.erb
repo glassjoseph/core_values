@@ -1,0 +1,43 @@
+<h1>Welcome</h1>
+
+<div class="intro" id="1">
+  <p>This is not a goal-tracking app. This is a conversation. It's a conversation about who you are and what you care about.</p>
+
+  <p>So tell me, what do you really care about?</p>
+
+  <div id="choices">
+    <button type="button" class="btn btn-primary" id="ok-button">Ok</button>
+    <button type="button" class="btn btn-warning" id="no-button">No Thanks</button>
+</div>
+
+</div>
+
+
+<div class="intro" id="no" style="display:none">
+    <p>Alright then. Have a good day. Maybe we'll talk again sometime.</p>
+</div>
+
+
+<div class="intro" id="2" style="display:none">
+  <h3>Values</h3>
+  <p>I value</p>
+  <input type="text" name="" size="55" placeholder="Family  Kindness  Engagement  Health  Making a Difference" id="values-input">
+  <button type="button" class="btn btn-primary" id="add-value">I care about this</button>
+  <button type="button" id="finished" class="btn btn-info">I'm finished</button>
+</div>
+
+
+
+
+<div class="intro" id="3" style="display:none">
+  <h3>Priorities</h3>
+  <p>Sort Your values</p>
+</div>
+
+<ul id="values">
+</ul>
+
+
+
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script>
