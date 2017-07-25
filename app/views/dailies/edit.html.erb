@@ -1,0 +1,6 @@
+<h1>Change Goal</h1>
+<%= form_for @daily do |f| %>
+  <%= f.label :goal %>
+  <%= f.text_field :goal, required: true %>
+  <%= f.submit "Edit Goal" %>
+<% end %>
