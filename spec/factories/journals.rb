@@ -1,8 +1,8 @@
 FactoryGirl.define do
   factory :journal do
-    title "MyString"
-    content "MyText"
-    user nil
-    daily nil
+    title "Journal Title"
+    content "Journal content"
+    user
+    daily
   end
 end
