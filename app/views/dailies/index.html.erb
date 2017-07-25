@@ -1,0 +1,29 @@
+<h1>Dailies</h1>
+
+<table class="table">
+  <tr>
+    <th>Did I do my best to</th>
+    <th> <%= 7.day.ago.strftime("%a")%>   </th>
+    <th> <%= 6.day.ago.strftime("%a")%>   </th>
+    <th> <%= 5.day.ago.strftime("%a")%>   </th>
+    <th> <%= 4.day.ago.strftime("%a")%>   </th>
+    <th> <%= 3.day.ago.strftime("%a")%>   </th>
+    <th> <%= 2.day.ago.strftime("%a")%>   </th>
+    <th> <%= 1.day.ago.strftime("%a")%>   </th>
+  </tr>
+
+<% if @dailies%>
+  <% @dailies.each do |daily| %>
+    <tr>
+      <td><%=daily.goal%></td>
+      <td> <%=daily.scores[-7].score if daily.scores[-7]%></td>
+      <td> <%=daily.scores[-6].score if daily.scores[-6]%></td>
+      <td> <%=daily.scores[-5].score if daily.scores[-5]%></td>
+      <td> <%=daily.scores[-4].score if daily.scores[-4]%></td>
+      <td> <%=daily.scores[-3].score if daily.scores[-3]%></td>
+      <td> <%=daily.scores[-2].score if daily.scores[-2]%></td>
+      <td> <%=daily.scores[-1].score if daily.scores[-1]%></td>
+    </tr>
+  <%end%>
+<% end %>
+</table>
