@@ -3,27 +3,20 @@
 <table class="table">
   <tr>
     <th>Did I do my best to</th>
-    <th> <%= 7.day.ago.strftime("%a")%>   </th>
-    <th> <%= 6.day.ago.strftime("%a")%>   </th>
-    <th> <%= 5.day.ago.strftime("%a")%>   </th>
-    <th> <%= 4.day.ago.strftime("%a")%>   </th>
-    <th> <%= 3.day.ago.strftime("%a")%>   </th>
-    <th> <%= 2.day.ago.strftime("%a")%>   </th>
-    <th> <%= 1.day.ago.strftime("%a")%>   </th>
+    <%= render partial: 'shared/past_week' %>
+    <th>Weekly Average</th>
   </tr>
 
-    <tr>
-      <td><%=@daily.goal%></td>
-      <td> <%=@daily.scores[-7].score if @daily.scores[-7]%></td>
-      <td> <%=@daily.scores[-6].score if @daily.scores[-6]%></td>
-      <td> <%=@daily.scores[-5].score if @daily.scores[-5]%></td>
-      <td> <%=@daily.scores[-4].score if @daily.scores[-4]%></td>
-      <td> <%=@daily.scores[-3].score if @daily.scores[-3]%></td>
-      <td> <%=@daily.scores[-2].score if @daily.scores[-2]%></td>
-      <td> <%=@daily.scores[-1].score if @daily.scores[-1]%></td>
-    </tr>
+  <tr>
+    <td><%=@daily.goal%></td>
+    <% @daily.weeks_scores.each do |score| %>
+        <td><%=score || "-" %> </td>
+    <% end %>
+    <td> <%= @daily.weeks_average %> </td>
+  </tr>
+
   </table>
 
 
-<%= link_to "Edit Goal", edit_daily_path(@daily)%>
-<%= link_to "Delete Goal", daily_path(@daily), method: :delete%>
+<%= link_to "Edit Goal", edit_daily_path(@daily), class: "btn btn-primary"%>
+<%= link_to "Delete Goal", daily_path(@daily), method: :delete,  class: "btn btn-danger"%>
