@@ -2,6 +2,7 @@ class DailiesController < ApplicationController
 
   def index
     @dailies = current_user.dailies
+    @chart_data = @dailies.map { |daily| daily.table_row}.reduce(:+)
   end
 
 
