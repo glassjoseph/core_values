@@ -18,19 +18,41 @@ $( document ).ready(function(){
     $('#3').fadeIn('slow')
   })
 
-
   $( function() {
     $( "#values" ).sortable();
   } );
 
-
-
   $("body").on("click", "#add-value", appendValue)
 
+  dailyChart()
 
   // $('#values  li:lt(2)')
 })
 
+function dailyChart() {
+  let dataSource = $("#chart").attr("data-source");
+  if (dataSource != undefined) {
+    let data = JSON.parse(dataSource);
+    let chart = c3.generate({
+      bindto: "#chart",
+      data: {
+        columns: data,
+        type : 'spline'
+      },
+    });
+  }
+}
+
+
+// var dataSource = $("#chart2").attr("data-source");
+//
+// var data2 = JSON.parse(dataSource);
+// var chart = c3.generate({
+//   bindto: '#chart2',
+//   data: { columns: data2 }
+// });
+//
+//
 
 
 // function postLink(e) {
