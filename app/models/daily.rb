@@ -20,4 +20,8 @@ class Daily < ApplicationRecord
     results = self.scores.created_between((Date.today - 7), Date.today).order(date: :desc).pluck(:score)
     results.reduce(:+)/results.length unless results.empty?
   end
+
+  def table_row
+    [[goal] + weeks_scores.map {|n| n || 0}]
+  end
 end
