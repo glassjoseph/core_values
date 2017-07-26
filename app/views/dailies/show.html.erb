@@ -7,16 +7,19 @@
     <th>Weekly Average</th>
   </tr>
 
-  <tr>
+  <tr class="goal-data">
     <td><%=@daily.goal%></td>
     <% @daily.weeks_scores.each do |score| %>
-        <td><%=score || "-" %> </td>
+        <td><%=score || "-"%></td>
     <% end %>
     <td> <%= @daily.weeks_average %> </td>
   </tr>
-
-  </table>
-
+</table>
 
 <%= link_to "Edit Goal", edit_daily_path(@daily), class: "btn btn-primary"%>
 <%= link_to "Delete Goal", daily_path(@daily), method: :delete,  class: "btn btn-danger"%>
+
+
+<div id="chart" data-source="<%= @daily.table_row%>"></div>
+
+<!-- <%# x =  [@daily.goal] + @daily.weeks_scores%> -->

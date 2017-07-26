@@ -21,4 +21,5 @@
 </table>
 
 <%= link_to "Add New Daily", new_daily_path, class: 'btn btn-primary'%>
-<td></td>
+
+<div id="chart" data-source="<%= @chart_data%>"></div>
