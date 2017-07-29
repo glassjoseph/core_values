@@ -19,30 +19,17 @@ $( document ).ready(function(){
   })
 
   $( function() {
-    $( "#values" ).sortable();
+    if ("#values") {sortValues()}
   } );
 
   $("body").on("click", "#add-value", appendValue)
 
-  dailyChart()
-
   // $('#values  li:lt(2)')
 })
 
-function dailyChart() {
-  let dataSource = $("#chart").attr("data-source");
-  if (dataSource != undefined) {
-    let data = JSON.parse(dataSource);
-    let chart = c3.generate({
-      bindto: "#chart",
-      data: {
-        columns: data,
-        type : 'spline'
-      },
-    });
-  }
+function sortValues() {
+  $( "#values" ).sortable();
 }
-
 
 // var dataSource = $("#chart2").attr("data-source");
 //
