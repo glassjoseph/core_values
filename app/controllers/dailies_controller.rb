@@ -2,6 +2,8 @@ class DailiesController < ApplicationController
 
   def index
     @dailies = current_user.dailies
+    @chart_data = current_user.all_scores_list
+
   end
 
 
@@ -15,10 +17,11 @@ class DailiesController < ApplicationController
 
   def create
     # @daily = Daily.new(daily_params)
-    if current_user.new(daily_params).save
+    if current_user.dailies.new(daily_params).save
       # session[:daily_id] = @daily.id
       # redirect_to dailies_path
-      redirect_to root_path
+      flash[:success] = "Goal Created!"
+      redirect_to dailies_path
     else
       flash.now[:danger] = "Creation Unsuccessful"
       render :new
@@ -43,7 +46,8 @@ class DailiesController < ApplicationController
   def destroy
     @daily = current_user.dailies.find(params[:id])
     @daily.destroy
-
+    flash[:success] = "Goal deleted."
+    redirect_to dailies_path
   end
 
 

@@ -36,6 +36,8 @@ gem 'bcrypt', '~> 3.1.7'
 # gem 'capistrano-rails', group: :development
 
 gem 'bootstrap-sass'
+gem 'd3-rails'
+gem 'c3-rails'
 
 group :test do
   gem 'capybara'

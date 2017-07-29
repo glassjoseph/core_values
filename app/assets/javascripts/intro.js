@@ -18,19 +18,28 @@ $( document ).ready(function(){
     $('#3').fadeIn('slow')
   })
 
-
   $( function() {
-    $( "#values" ).sortable();
+    if ("#values") {sortValues()}
   } );
 
-
-
   $("body").on("click", "#add-value", appendValue)
-
 
   // $('#values  li:lt(2)')
 })
 
+function sortValues() {
+  $( "#values" ).sortable();
+}
+
+// var dataSource = $("#chart2").attr("data-source");
+//
+// var data2 = JSON.parse(dataSource);
+// var chart = c3.generate({
+//   bindto: '#chart2',
+//   data: { columns: data2 }
+// });
+//
+//
 
 
 // function postLink(e) {

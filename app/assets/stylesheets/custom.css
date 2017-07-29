@@ -2,3 +2,12 @@
 body {
   padding: 10px;
 }
+
+
+#values li {
+  width: 50%;
+  border-radius: 3px;
+}
+#values :hover {
+  background-color: rgb(178, 226, 238);
+}
