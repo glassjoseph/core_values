@@ -20,6 +20,6 @@
 <%= link_to "Delete Goal", daily_path(@daily), method: :delete,  class: "btn btn-danger"%>
 
 
-<div id="chart" data-source="<%= @daily.table_row%>"></div>
+<div id="chart" data-source="<%= @daily.scores_list%>"></div>
 
 <!-- <%# x =  [@daily.goal] + @daily.weeks_scores%> -->
