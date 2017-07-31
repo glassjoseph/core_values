@@ -20,14 +20,17 @@ require 'faker'
   user.dailies.create!(goal: "Be patient?")
 
   user.dailies.each do |daily|
-    daily.scores.create!(score: (rand(7) + 1 ), date: 1.day.ago.to_date)
-    daily.scores.create!(score: (rand(7) + 1 ), date: 2.days.ago.to_date)
-    daily.scores.create!(score: (rand(7) + 1 ), date: 3.days.ago.to_date)
-    daily.scores.create!(score: (rand(7) + 1 ), date: 4.days.ago.to_date)
-    daily.scores.create!(score: (rand(7) + 1 ), date: 5.days.ago.to_date)
-    daily.scores.create!(score: (rand(7) + 1 ), date: 6.days.ago.to_date)
-    daily.scores.create!(score: (rand(7) + 1 ), date: 7.days.ago.to_date)
+    daily.scores.create!(score: (rand(10) + 1 ), date: 1.day.ago.to_date)
+    daily.scores.create!(score: (rand(10) + 1 ), date: 2.days.ago.to_date)
+    daily.scores.create!(score: (rand(10) + 1 ), date: 3.days.ago.to_date)
+    daily.scores.create!(score: (rand(10) + 1 ), date: 4.days.ago.to_date)
+    daily.scores.create!(score: (rand(10) + 1 ), date: 5.days.ago.to_date)
+    daily.scores.create!(score: (rand(10) + 1 ), date: 6.days.ago.to_date)
+    daily.scores.create!(score: (rand(10) + 1 ), date: 7.days.ago.to_date)
   end
+
+  user.resources.create(resource_type: "image", content: "http://static.boredpanda.com/blog/wp-content/uploads/2015/09/cute-bunnies-25__605.jpg", notes: "Adorable")
+  user.resources.create(resource_type: "image", content: "http://static.boredpanda.com/blog/wp-content/uploads/2015/09/cute-bunnies-28__605.jpg", notes: "Super Adorable")
 
   Supporter.create(
            first_name: Faker::LordOfTheRings.character,
@@ -37,3 +40,5 @@ require 'faker'
 
 
 end
+
+User.last.update_attribute(:email, "n")

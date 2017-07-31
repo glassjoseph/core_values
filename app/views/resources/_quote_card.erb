@@ -1,0 +1,16 @@
+<div class="card">
+  <div class="card-header">
+    Quote
+  </div>
+  <div class="card-block">
+    <blockquote class="card-blockquote">
+      <p> <%= resource.content %> </p>
+    </blockquote>
+    <div class="card-block">
+      <h5>Notes</h5>
+      <p class="card-text"> <%= resource.notes %> </p>
+    </div>
+  </div>
+  <%= button_to "Edit", edit_resource_path(resource), method: :get, class: "btn btn-primary" %>
+  <%= button_to "Delete", resource_path(resource), method: :delete, class: "btn btn-danger" %>
+</div>

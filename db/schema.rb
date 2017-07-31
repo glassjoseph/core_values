@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170723001209) do
+ActiveRecord::Schema.define(version: 20170729201720) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,6 +32,16 @@ ActiveRecord::Schema.define(version: 20170723001209) do
     t.datetime "updated_at", null: false
     t.index ["daily_id"], name: "index_journals_on_daily_id", using: :btree
     t.index ["user_id"], name: "index_journals_on_user_id", using: :btree
+  end
+
+  create_table "resources", force: :cascade do |t|
+    t.string   "resource_type", default: ""
+    t.text     "content",       default: ""
+    t.text     "notes",         default: ""
+    t.integer  "user_id"
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.index ["user_id"], name: "index_resources_on_user_id", using: :btree
   end
 
   create_table "scores", force: :cascade do |t|
@@ -77,6 +87,7 @@ ActiveRecord::Schema.define(version: 20170723001209) do
   add_foreign_key "dailies", "users"
   add_foreign_key "journals", "dailies"
   add_foreign_key "journals", "users"
+  add_foreign_key "resources", "users"
   add_foreign_key "scores", "dailies"
   add_foreign_key "supporters", "dailies"
   add_foreign_key "supporters", "users"

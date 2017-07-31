@@ -1,0 +1,31 @@
+<h1>Resources</h1>
+
+<%= link_to "Add New Resource", new_resource_path, class: 'btn btn-primary'%>
+
+
+<% if @resources%>
+  <% @resources.each do |resource| %>
+    <% if resource.resource_type == "image"%>
+      <%= render partial: "image_card", locals: {resource: resource} %>
+    <% elsif resource.resource_type == "quote" %>
+      <%= render partial: "quote_card", locals: {resource: resource}  %>
+    <% elsif resource.resource_type == "link" %>
+      <%= render partial: "link_card", locals: {resource: resource}  %>
+    <% else %>
+      <div class="card">
+        <div class="card-block">
+          <div class="card-title">
+            <%= resource.resource_type %>
+          </div>
+        </div>
+        <div class="card-block">
+          <%= resource.content %>
+          <h5>Notes</h5>
+          <p class="card-text"> <%= resource.notes %> </p>
+        </div>
+        <%= button_to "Edit", edit_resource_path(resource), method: :get, class: "btn btn-primary" %>
+        <%= button_to "Delete", resource_path(resource), method: :delete, class: "btn btn-danger" %>
+      </div>
+    <% end %>
+  <%end%>
+<% end %>
