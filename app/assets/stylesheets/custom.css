@@ -1,6 +1,6 @@
 
 body {
-  padding: 10px;
+  padding: 25px;
 }
 
 
@@ -8,6 +8,27 @@ body {
   width: 50%;
   border-radius: 3px;
 }
+
 #values :hover {
   background-color: rgb(178, 226, 238);
+}
+
+
+/*
+img {
+  max-width: 50%;
+}*/
+
+
+.card {
+  max-width: 50%;
+}
+
+.card-img-top {
+    width: 100%;
+
+}
+
+form {
+  max-width: 75%;
 }
