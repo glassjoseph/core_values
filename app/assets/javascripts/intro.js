@@ -18,18 +18,15 @@ $( document ).ready(function(){
     $('#3').fadeIn('slow')
   })
 
-  $( function() {
-    if ("#values") {sortValues()}
-  } );
+  $( "#values" ).sortable();
+
 
   $("body").on("click", "#add-value", appendValue)
 
   // $('#values  li:lt(2)')
 })
 
-function sortValues() {
-  $( "#values" ).sortable();
-}
+
 
 // var dataSource = $("#chart2").attr("data-source");
 //

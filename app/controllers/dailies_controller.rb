@@ -35,8 +35,8 @@ class DailiesController < ApplicationController
   def update
     @daily = current_user.dailies.find(params[:id])
     if @daily.update(daily_params)
-      flash[:success] = "Goal updated!"
-      redirect_to dailies_path
+      flash[:success] = "Goal Updated!"
+      redirect_to daily_path(@daily)
     else
       flash.now[:warning] = "Update Unsuccessful"
       render :edit
@@ -46,7 +46,7 @@ class DailiesController < ApplicationController
   def destroy
     @daily = current_user.dailies.find(params[:id])
     @daily.destroy
-    flash[:success] = "Goal deleted."
+    flash[:success] = "Goal Deleted"
     redirect_to dailies_path
   end
 
