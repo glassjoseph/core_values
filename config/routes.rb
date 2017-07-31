@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   resources :users, only: [:new, :create]
 
   resources :dailies
+  resources :resources, except: [:show]
 
 
 end
