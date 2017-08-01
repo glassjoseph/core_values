@@ -18,10 +18,19 @@ $( document ).ready(function(){
     $('#3').fadeIn('slow')
   })
 
+  $("body").on("click", "#priorities-finished", function(){
+    $('#3').hide('slow')
+    $('#choices').hide('slow')
+    $('#4').fadeIn('slow')
+  })
+
+
   $( "#values" ).sortable();
 
 
   $("body").on("click", "#add-value", appendValue)
+
+
 
   // $('#values  li:lt(2)')
 })
