@@ -5,6 +5,7 @@
     <th>Did I do my best to</th>
     <%= render partial: 'shared/past_week' %>
     <th>Weekly Average</th>
+    <th>Tags</th>
   </tr>
 
 <% if @dailies%>
@@ -15,6 +16,11 @@
           <td><%=score || "-" %> </td>
       <% end %>
       <td> <%= daily.weeks_average %> </td>
+      <td>
+        <% daily.tags.each do |tag| %>
+          <%= link_to tag.name, tag_path(tag) %>
+        <% end %>
+      </td>
     </tr>
   <%end%>
 <% end %>

@@ -18,7 +18,7 @@
     <%= f.text_area :notes, class: "form-control" %>
   </div>
   <p>
-  <%= f.label :tag_list %><br />
+  <%= f.label :tags %><br />
   <%= f.text_field :tag_list, value: @resource.join_tags  %>
 </p>
   <% if @resource.id %>
