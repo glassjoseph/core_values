@@ -9,8 +9,9 @@ class ResourcesController < ApplicationController
   end
 
   def create
-    if current_user.resources.new(resource_params).save
-      current_user.resources.last.tag_list(tag_params[:tag_list])
+    new_resource = current_user.resources.new(resource_params)
+    if new_resource.save
+      new_resource.tag_list(tag_params[:tag_list])
       flash[:success] = "Resource Created!"
       redirect_to resources_path
     else
@@ -27,7 +28,7 @@ class ResourcesController < ApplicationController
   def update
     @resource = current_user.resources.find(params[:id])
     if @resource.update(resource_params)
-      current_user.resources.last.tag_list(tag_params[:tag_list])
+      @resource.tag_list(tag_params[:tag_list])
       flash[:success] = "Resource Updated!"
       redirect_to resources_path
     else
