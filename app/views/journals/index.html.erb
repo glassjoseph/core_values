@@ -22,8 +22,11 @@
             <% end %>
           </p>
         </div>
+        <div class="btn-group">
+
         <%= button_to "Edit", edit_journal_path(journal), method: :get, class: "btn btn-primary" %>
         <%= button_to "Delete", journal_path(journal), method: :delete, class: "btn btn-danger" %>
+      </div>
       </div>
     <% end %>
   <%end%>
