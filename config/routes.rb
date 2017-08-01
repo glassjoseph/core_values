@@ -10,6 +10,7 @@ Rails.application.routes.draw do
 
   resources :users, only: [:new, :create]
   resources :dailies
+  resources :journals
   resources :resources, except: [:show]
   resources :tags, only: [:show]
 
