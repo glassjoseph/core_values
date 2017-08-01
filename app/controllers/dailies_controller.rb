@@ -3,7 +3,6 @@ class DailiesController < ApplicationController
   def index
     @dailies = current_user.dailies
     @chart_data = current_user.all_scores_list
-
   end
 
 
@@ -35,6 +34,8 @@ class DailiesController < ApplicationController
 
   def update
     @daily = current_user.dailies.find(params[:id])
+    @daily.scores.create(score_params[:score]) if params[:daily][:score]
+
     if @daily.update(daily_params)
       @daily.tag_list(tag_params[:tag_list])
       flash[:success] = "Goal Updated!"
@@ -56,6 +57,10 @@ class DailiesController < ApplicationController
 
     def daily_params
       params.require(:daily).permit(:goal, :user_id)
+    end
+
+    def score_params
+      params.require(:daily).permit(score: [:score, :date] )
     end
 
     def tag_params

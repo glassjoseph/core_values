@@ -4,10 +4,11 @@ class Daily < ApplicationRecord
   has_many :journals, dependent: :destroy
   has_many :scores, dependent: :destroy
   has_one :supporter, dependent: :destroy
-
+  accepts_nested_attributes_for :scores, :reject_if => lambda { |a| a[:content].blank? }, :allow_destroy => true
 
   def weeks_scores
-    results = self.scores.created_between((Date.today - 7), Date.today).order(:date).pluck(:score)
+    results = self.scores.created_between((Date.today - 7), Date.today)
+    .order(:date).limit(7).pluck(:score)
 
     while results.length < 7
       results.unshift(nil)

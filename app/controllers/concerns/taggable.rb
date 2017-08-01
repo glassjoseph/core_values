@@ -14,7 +14,7 @@ module Taggable
   end
 
   def tag_list(tags_string="")
-    # tags_string = join_tags if tag_string.empty?
+    tags_string = join_tags if tags_string.nil? || tags_string.empty?
     tag_names = tags_string.split(",").collect{|s| s.strip.downcase}.uniq
     new_or_found_tags = tag_names.collect { |name| Tag.find_or_create_by(name: name)}
     new_or_found_tags.each {|tag| self.tags << tag unless self.tags.include?(tag)}
