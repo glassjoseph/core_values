@@ -38,11 +38,11 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'bootstrap'
 gem 'd3-rails'
 gem 'c3-rails'
+gem 'faker', :git => 'git://github.com/stympy/faker.git', :branch => 'master'
 
 group :test do
   gem 'capybara'
   gem 'database_cleaner'
-  gem 'faker', :git => 'git://github.com/stympy/faker.git', :branch => 'master'
   gem 'launchy'
   gem 'selenium-webdriver'
 end
