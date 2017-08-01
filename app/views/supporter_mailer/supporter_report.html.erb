@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+  </head>
+  <body>
+    <%= @supporter.full_name %>,
+
+    <p>Here's an update on how <%= @user.full_name %> is doing on their goals this week.</p>
+
+
+    <table class="table" id="dailies-table">
+      <tr>
+        <th>Did I do my best to</th>
+        <%= render partial: 'shared/past_week' %>
+        <th>Weekly Average</th>
+        <th>Tags</th>
+      </tr>
+      <% @dailies.each do |daily| %>
+        <tr>
+          <td><%=daily.goal%></td>
+          <% daily.weeks_scores.each do |score| %>
+              <td><%=score || "-" %> </td>
+          <% end %>
+          <td> <%= daily.weeks_average %> </td>
+          <td>
+          </td>
+        </tr>
+      <%end%>
+    </table>
+
+
+    <p><%= @user.first_name %> has been working hard. Why not <a href="mailto:<%=@user.email%>">send them a note</a> of encouragement?</p>
+  </body>
+</html>
