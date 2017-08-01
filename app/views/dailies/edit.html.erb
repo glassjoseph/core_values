@@ -1,9 +1,12 @@
 <h1>Change Goal</h1>
 <%= form_for @daily, class: "form-inline" do |f| %>
-
   <div class="form-group">
     <%= f.label :goal %>
     <%= f.text_field :goal, required: true, class: "form-control" %>
   </div>
+  <p>
+    <%= f.label :tags %><br />
+    <%= f.text_field :tag_list, value: @daily.join_tags  %>
+  </p>
   <%= f.submit "Edit Goal", class: "btn btn-primary" %>
 <% end %>
