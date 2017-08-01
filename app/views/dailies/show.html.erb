@@ -25,6 +25,19 @@
 <%= link_to "Edit Goal", edit_daily_path(@daily), class: "btn btn-primary"%>
 <%= link_to "Delete Goal", daily_path(@daily), method: :delete,  class: "btn btn-danger"%>
 
+<br>
+<br>
+
+<%= form_for @daily, class: "form-inline"  do |f| %>
+  <%= f.fields_for :score do |f| %>
+    <%= f.label :date %>
+    <%= f.date_field :date, value: Date.today, class: "form-control" %>
+    <%= f.label :score %>
+    <%= f.number_field :score, in: 1..10, class: "form-control" %>
+  <% end %>
+  <%= f.submit "Submit Score", class: "btn btn-primary" %>
+<% end %>
+<br>
 
 <div id="chart" data-source="<%= @daily.scores_list%>"></div>
 
