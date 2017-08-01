@@ -15,4 +15,6 @@
 //= require bootstrap-sprockets
 //= require d3
 //= require c3
+//= require intro
+//= require charts
 //= require_tree .

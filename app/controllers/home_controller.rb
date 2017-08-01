@@ -5,6 +5,7 @@ class HomeController < ApplicationController
   end
 
   def new
+    @daily = Daily.new
   end
 
 end
