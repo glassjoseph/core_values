@@ -16,8 +16,9 @@ class DailiesController < ApplicationController
   end
 
   def create
-    # @daily = Daily.new(daily_params)
-    if current_user.dailies.new(daily_params).save
+    daily = current_user.dailies.new(daily_params)
+    if daily.save
+      daily.tag_list(tag_params[:tag_list])
       # session[:daily_id] = @daily.id
       # redirect_to dailies_path
       flash[:success] = "Goal Created!"
@@ -35,6 +36,7 @@ class DailiesController < ApplicationController
   def update
     @daily = current_user.dailies.find(params[:id])
     if @daily.update(daily_params)
+      @daily.tag_list(tag_params[:tag_list])
       flash[:success] = "Goal Updated!"
       redirect_to daily_path(@daily)
     else
@@ -50,10 +52,13 @@ class DailiesController < ApplicationController
     redirect_to dailies_path
   end
 
+  private
 
-  def daily_params
-    params.require(:daily).permit(:goal, :user_id)
-  end
+    def daily_params
+      params.require(:daily).permit(:goal, :user_id)
+    end
 
-
+    def tag_params
+      params.require(:daily).permit(:tag_list)
+    end
 end
