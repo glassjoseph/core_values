@@ -57,7 +57,7 @@ function appendValue() {
   var data = $('#values-input').val()
   if (data !== "") {
     $('#values').append(
-      `<li class="value">${data}</li>`)
+      "<li class='value'>" + data + "</li>")
     clearInputs()
     $('input').focus()
   }
