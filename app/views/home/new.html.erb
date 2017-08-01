@@ -46,7 +46,7 @@
 </div>
 
 
-<%= form_for @daily, url: daily_path(daily), method: :post, class: "form-inline" do |f| %>
+<%= form_for @daily, url: dailies_path, method: :post, class: "form-inline" do |f| %>
 <div class="form-group">
   <%= f.label :goal %>
   <%= f.text_field :goal, required: true, class: "form-control" %>
