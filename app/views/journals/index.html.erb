@@ -1,0 +1,29 @@
+<h1>Journals</h1>
+
+<%= link_to "Add New Journal Entry", new_journal_path, class: 'btn btn-primary'%>
+
+
+<% if @journals%>
+  <% @journals.each do |journal| %>
+      <div class="card">
+        <div class="card-block">
+          <div class="card-title">
+            <%= journal.title %>
+            <p> Date: <%= journal.created_at.strftime("%A, %b %e, %G") %></p>
+          </div>
+        </div>
+        <div class="card-block">
+          <p class="card-text">
+            <%= journal.content %>
+          </p>
+          <p> Tags:
+            <% journal.tags.each do |tag| %>
+              <%= link_to tag.name, tag_path(tag) %>
+            <% end %>
+          </p>
+        </div>
+        <%= button_to "Edit", edit_journal_path(journal), method: :get, class: "btn btn-primary" %>
+        <%= button_to "Delete", journal_path(journal), method: :delete, class: "btn btn-danger" %>
+      </div>
+    <% end %>
+  <%end%>
