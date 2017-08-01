@@ -18,8 +18,6 @@ class DailiesController < ApplicationController
     daily = current_user.dailies.new(daily_params)
     if daily.save
       daily.tag_list(tag_params[:tag_list])
-      # session[:daily_id] = @daily.id
-      # redirect_to dailies_path
       flash[:success] = "Goal Created!"
       redirect_to dailies_path
     else
@@ -34,7 +32,10 @@ class DailiesController < ApplicationController
 
   def update
     @daily = current_user.dailies.find(params[:id])
-    @daily.scores.create(score_params[:score]) if params[:daily][:score]
+    if params[:daily][:score]
+      @daily.scores.create(score_params[:score])
+      SupporterMailer.supporter_report(current_user).deliver
+    end
 
     if @daily.update(daily_params)
       @daily.tag_list(tag_params[:tag_list])
