@@ -44,11 +44,12 @@ class ResourcesController < ApplicationController
     redirect_to resources_path
   end
 
-  def resource_params
-    params.require(:resource).permit(:resource_type, :content, :notes)
-  end
+  private
+    def resource_params
+      params.require(:resource).permit(:resource_type, :content, :notes)
+    end
 
-  def tag_params
-    params.require(:resource).permit(:tag_list)
-  end
+    def tag_params
+      params.require(:resource).permit(:tag_list)
+    end
 end
