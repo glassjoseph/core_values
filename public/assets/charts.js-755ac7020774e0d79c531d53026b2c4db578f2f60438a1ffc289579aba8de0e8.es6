@@ -1,14 +1,13 @@
 $( document ).ready(function(){
-  // $("body").on("click", "#add-value", postLink)
   dailyChart()
 })
 
 
 function dailyChart() {
-  let dataSource = $("#chart").attr("data-source");
+  var dataSource = $("#chart").attr("data-source");
   if (dataSource != undefined) {
-    let data = JSON.parse(dataSource);
-    let chart = c3.generate({
+    var data = JSON.parse(dataSource);
+    var chart = c3.generate({
       bindto: "#chart",
       data: {
         columns: data,

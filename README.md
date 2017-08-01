@@ -1,24 +1,22 @@
+# URLockBox
+
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Summary
+Core Values is
+Try it out live [here](https://core-values.herokuapp.com)!
 
-Things you may want to cover:
+## To Clone:
 
-* Ruby version
+`git clone git@github.com:glassjoseph/core_values.git`
 
-* System dependencies
+## To Set Up Database:
+`cd core_values`
+`bundle install`
+`rake db:create`
+`rake db:migrate`
+`rake db:seed`
 
-* Configuration
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## To run the test suite:
+`rspec`
