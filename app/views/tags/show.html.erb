@@ -1,8 +1,32 @@
 <h1>Tag: <%= @tag.name %></h1>
 
 
-<%# if @tag.dailies.empty? %>
-<h2>Dalies</h2>
+<% unless @tag.dailies.empty? %>
+  <h2>Dalies</h2>
+  <table class="table" id="dailies-table">
+    <tr>
+      <th>Did I do my best to</th>
+      <%= render partial: 'shared/past_week' %>
+      <th>Weekly Average</th>
+      <th>Tags</th>
+    </tr>
+    <% @tag.dailies.each do |daily| %>
+      <tr class="goal-data">
+        <td><%=link_to daily.goal, daily_path(daily)%></td>
+        <% daily.weeks_scores.each do |score| %>
+            <td><%=score || "-"%></td>
+        <% end %>
+        <td> <%= daily.weeks_average %> </td>
+        <td>
+          <% daily.tags.each do |tag| %>
+            <%= link_to tag.name, tag_path(tag) %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+  <% end %>
+
 
 
 <h2>Resources</h2>
