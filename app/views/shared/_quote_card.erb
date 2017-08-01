@@ -9,6 +9,14 @@
     <div class="card-block">
       <h5>Notes</h5>
       <p class="card-text"> <%= resource.notes %> </p>
+      <% resource.tags.each do |tag| %>
+        <%= tag.name %>
+      <% end %>
+      <p> Tags:
+        <% resource.tags.each do |tag| %>
+          <%= link_to tag.name, tag_path(tag) %>
+        <% end %>
+      </p>
     </div>
   </div>
   <%= button_to "Edit", edit_resource_path(resource), method: :get, class: "btn btn-primary" %>

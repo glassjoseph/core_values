@@ -5,6 +5,11 @@
   <div class="card-block">
     <h5>Notes</h5>
     <p class="card-text"> <%= resource.notes %> </p>
+    <p> Tags:
+      <% resource.tags.each do |tag| %>
+        <%= link_to tag.name, tag_path(tag) %>
+      <% end %>
+    </p>
   </div>
   <%= button_to "Edit", edit_resource_path(resource), method: :get, class: "btn btn-primary" %>
   <%= button_to "Delete", resource_path(resource), method: :delete, class: "btn btn-danger" %>

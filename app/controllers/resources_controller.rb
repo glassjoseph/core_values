@@ -9,11 +9,14 @@ class ResourcesController < ApplicationController
   end
 
   def create
-    if current_user.resources.new(resource_params).save
+    new_resource = current_user.resources.new(resource_params)
+    if new_resource.save
+      new_resource.tag_list(tag_params[:tag_list])
       flash[:success] = "Resource Created!"
       redirect_to resources_path
     else
       flash.now[:danger] = "Creation Unsuccessful"
+      @resource = Resource.new
       render :new
     end
   end
@@ -25,6 +28,7 @@ class ResourcesController < ApplicationController
   def update
     @resource = current_user.resources.find(params[:id])
     if @resource.update(resource_params)
+      @resource.tag_list(tag_params[:tag_list])
       flash[:success] = "Resource Updated!"
       redirect_to resources_path
     else
@@ -40,8 +44,11 @@ class ResourcesController < ApplicationController
     redirect_to resources_path
   end
 
-
   def resource_params
     params.require(:resource).permit(:resource_type, :content, :notes)
+  end
+
+  def tag_params
+    params.require(:resource).permit(:tag_list)
   end
 end

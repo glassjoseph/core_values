@@ -1,10 +1,12 @@
-<h1>Resources</h1>
-
-<%= link_to "Add New Resource", new_resource_path, class: 'btn btn-primary'%>
+<h1>Tag: <%= @tag.name %></h1>
 
 
-<% if @resources%>
-  <% @resources.each do |resource| %>
+<%# if @tag.dailies.empty? %>
+<h2>Dalies</h2>
+
+
+<h2>Resources</h2>
+<% @tag.resources.each do |resource| %>
     <% if resource.resource_type == "image"%>
       <%= render partial: "shared/image_card", locals: {resource: resource} %>
     <% elsif resource.resource_type == "quote" %>
@@ -22,15 +24,14 @@
           <%= resource.content %>
           <h5>Notes</h5>
           <p class="card-text"> <%= resource.notes %> </p>
-          <p> Tags:
-            <% resource.tags.each do |tag| %>
-              <%= link_to tag.name, tag_path(tag) %>
-            <% end %>
-          </p>
         </div>
+        <p> Tags:
+          <% resource.tags.each do |tag| %>
+            <%= link_to tag.name, tag_path(tag) %>
+          <% end %>
+        </p>
         <%= button_to "Edit", edit_resource_path(resource), method: :get, class: "btn btn-primary" %>
         <%= button_to "Delete", resource_path(resource), method: :delete, class: "btn btn-danger" %>
       </div>
-    <% end %>
   <%end%>
 <% end %>

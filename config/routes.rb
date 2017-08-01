@@ -9,9 +9,8 @@ Rails.application.routes.draw do
   delete "/login", to: "sessions#destroy"
 
   resources :users, only: [:new, :create]
-
   resources :dailies
   resources :resources, except: [:show]
-
+  resources :tags, only: [:show]
 
 end
