@@ -42,8 +42,8 @@ $( document ).ready(function(){
 // function postLink(e) {
 //   e.preventDefault();
 //
-//   let url = $('#link_url').val()
-//   let title = $('#link_title').val()
+//   var url = $('#link_url').val()
+//   var title = $('#link_title').val()
 //
 //   $.ajax({
 //     type: "POST",
@@ -54,7 +54,7 @@ $( document ).ready(function(){
 // }
 
 function appendValue() {
-  let data = $('#values-input').val()
+  var data = $('#values-input').val()
   if (data !== "") {
     $('#values').append(
       `<li class="value">${data}</li>`)
