@@ -17,6 +17,10 @@
     <%= f.label :notes %>
     <%= f.text_area :notes, class: "form-control" %>
   </div>
+  <p>
+  <%= f.label :tag_list %><br />
+  <%= f.text_field :tag_list, value: @resource.join_tags  %>
+</p>
   <% if @resource.id %>
     <%= f.submit "Edit Resource", class: "btn btn-primary" %>
   <% else %>
